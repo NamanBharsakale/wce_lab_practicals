@@ -1,5 +1,5 @@
 #include <iostream>
-#include <cstdlib>   // for malloc() and free()
+#include <cstdlib>  
 using namespace std;
 
 // Doubly linked list node
@@ -9,7 +9,6 @@ struct Node {
     Node* next;
 };
 
-// Head pointer
 Node* head = NULL;
 
 // Function to create a new node
@@ -196,3 +195,4 @@ int main() {
 
     return 0;
 }
+
