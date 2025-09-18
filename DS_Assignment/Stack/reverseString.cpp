@@ -1,9 +1,8 @@
 #include <iostream>
-#include <cstring>  // for strlen
+#include <cstring>  
 using namespace std;
 
-#define MAX 100   // maximum size for stack
-
+#define MAX 100   
 class Stack {
     char arr[MAX];
     int top;

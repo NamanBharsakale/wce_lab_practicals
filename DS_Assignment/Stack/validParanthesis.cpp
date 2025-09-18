@@ -8,7 +8,6 @@ int longestValidParentheses(char *s) {
     int top = -1;
     int maxLen = 0;
 
-    // push -1 to handle base for first valid substring
     stack[++top] = -1;
 
     for (int i = 0; s[i] != '\0'; i++) {
