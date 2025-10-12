@@ -3,62 +3,62 @@
 
 using namespace std;
 
-class LinearQueue {
+class CircularQueue {
     int arr[MAX];
     int front, rear;
 
-public:
-    LinearQueue() {
+    public:
+    CircularQueue(){
         front = -1;
         rear = -1;
     }
 
-    bool isFull() {
-        return rear == MAX - 1;
-    }
-
-    bool isEmpty() {
-        return front == -1 || front > rear;
-    }
-
-    void enqueue(int val) {
-        if (isFull()) {
-            cout << "Queue is full\n";
+    void enqueue(int val){
+        if((rear+1)%MAX == front){
+            cout<<"Overflow..";
             return;
         }
-        if (front == -1) front = 0;
-        rear++;
+
+        if(front == -1){
+            front = 0;
+            rear = 0;
+        }
+        else{
+            rear = (rear + 1)% MAX;
+        }
         arr[rear] = val;
-        cout << "Inserted: " << val << "\n";
     }
 
-    void dequeue() {
-        if (isEmpty()) {
-            cout << "Queue is empty\n";
+    void dequeue(){
+        if(front == -1){
+            cout<<"Underflow...";
             return;
         }
-        cout << "Deleted: " << arr[front] << "\n";
-        front++;
-        if (front > rear) {
-            // Reset queue after last element is dequeued
-            front = rear = -1;
+        cout<<"Deleted "<<arr[front];
+        if(front == rear){
+            front = -1;
+            rear = -1;
+        }
+        else{
+            front = (front+1)%MAX;
         }
     }
 
-    void display() {
-        if (isEmpty()) {
-            cout << "Queue is empty\n";
+    void display(){
+        if(front == -1){
+            cout<<"Empty..";
             return;
         }
-        cout << "Queue elements: ";
-        for (int i = front; i <= rear; i++)
-            cout << arr[i] << " ";
-        cout << "\n";
+        for(int i = front; i<= rear;i++){
+            cout<<" "<<arr[i];
+        }
     }
+
+    
 };
 
 int main() {
-    LinearQueue q;
+    CircularQueue q;
     int choice, val;
 
     do {

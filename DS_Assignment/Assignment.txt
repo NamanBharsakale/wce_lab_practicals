@@ -31,6 +31,21 @@ Assignment3
 >LinkedLit>recursiveSearch.cpp
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Assignment4
 >LinkedLit>doubleLL.cpp
 >LinkedLit>reverse.cpp
@@ -42,6 +57,45 @@ Assignment4
 Assignment5
 >Stack>stackOp.cpp
 >Stack>reverseSring.cpp
+>Stack>validparant.cpp
+
+Assignment6:
+>QUEUE>lqueue.cpp
+>QUEUE>circularqueue.cpp
+>QQUE>prQ.cpp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 >Stack>validParanthesis.cpp
 
 

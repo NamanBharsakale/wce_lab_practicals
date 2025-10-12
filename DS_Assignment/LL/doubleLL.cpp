@@ -2,7 +2,6 @@
 #include <cstdlib>  
 using namespace std;
 
-// Doubly linked list node
 struct Node {
     int data;
     Node* prev;
@@ -11,7 +10,6 @@ struct Node {
 
 Node* head = NULL;
 
-// Function to create a new node
 Node* createNode(int value) {
     Node* newNode = (Node*)malloc(sizeof(Node));
     newNode->data = value;
@@ -20,7 +18,6 @@ Node* createNode(int value) {
     return newNode;
 }
 
-// Insert at beginning
 void insertAtBeginning(int value) {
     Node* newNode = createNode(value);
     if (head == NULL) {
@@ -32,7 +29,6 @@ void insertAtBeginning(int value) {
     }
 }
 
-// Insert at end
 void insertAtEnd(int value) {
     Node* newNode = createNode(value);
     if (head == NULL) {
@@ -68,7 +64,6 @@ void insertAtPosition(int value, int pos) {
     }
 }
 
-// Delete from beginning
 void deleteFromBeginning() {
     if (head == NULL) {
         cout << "List is empty.\n";
@@ -80,7 +75,6 @@ void deleteFromBeginning() {
     free(temp);
 }
 
-// Delete from end
 void deleteFromEnd() {
     if (head == NULL) {
         cout << "List is empty.\n";
@@ -89,11 +83,10 @@ void deleteFromEnd() {
     Node* temp = head;
     while (temp->next != NULL) temp = temp->next;
     if (temp->prev != NULL) temp->prev->next = NULL;
-    else head = NULL;  // only one node case
+    else head = NULL;  
     free(temp);
 }
 
-// Delete from given position
 void deleteFromPosition(int pos) {
     if (head == NULL) {
         cout << "List is empty.\n";
@@ -117,11 +110,10 @@ void deleteFromPosition(int pos) {
 
     if (temp->next != NULL) temp->next->prev = temp->prev;
     if (temp->prev != NULL) temp->prev->next = temp->next;
-    else head = temp->next; // if first node
+    else head = temp->next; 
     free(temp);
 }
 
-// Display list
 void displayList() {
     if (head == NULL) {
         cout << "List is empty.\n";
@@ -136,7 +128,6 @@ void displayList() {
     cout << "\n";
 }
 
-// Menu
 int main() {
     int choice, value, pos;
 
