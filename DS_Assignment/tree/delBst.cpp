@@ -15,10 +15,12 @@ public:
 
 
 // Function to insert a value in BST
-Node* insert_Bst(Node* root, int data) {
+Node* insert_Bst(Node* root, int data) 
+{
     if (!root) {
         return new Node(data);
     }
+
     if (data <= root->val) {
         root->left = insert_Bst(root->left, data);
     } else {
