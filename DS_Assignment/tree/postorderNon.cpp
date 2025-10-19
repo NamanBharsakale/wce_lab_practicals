@@ -32,9 +32,10 @@ Node* BinaryTree(){
 }
 
 void postorder(Node* root){
-    if(root == NULL) return;
+    if(!root) return;
 
     stack<Node*> s1,s2;
+
     Node* ptr = root;
 
     s1.push(ptr);
@@ -44,16 +45,17 @@ void postorder(Node* root){
         s1.pop();
         s2.push(ptr);
 
-        if(ptr -> left){
+        if(ptr -> left)
+        {
             s1.push(ptr->left);
         }
-
-        if(ptr -> right){
-            s1.push(ptr->right);
+        if(ptr->right){
+            s1.push(ptr -> right);
         }
     }
 
-    while(!s2.empty()){
+    while (!s2.empty())
+    {
         ptr = s2.top();
         s2.pop();
         cout<<" "<<ptr->val;

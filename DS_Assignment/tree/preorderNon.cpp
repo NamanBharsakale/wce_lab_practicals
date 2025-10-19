@@ -32,20 +32,22 @@ Node* BinaryTree(){
 }
 
 void preorder(Node* root){
-    if(root == NULL) return;
+    if(!root) return;
 
     stack<Node*> s;
     s.push(root);
-
+    Node* ptr = root;
     while(!s.empty()){
-        Node* ptr = s.top();
+        ptr = s.top();
         s.pop();
+
         cout<<" "<<ptr->val;
-        if(ptr -> right != NULL){
+
+        if(ptr->right){
             s.push(ptr->right);
         }
 
-        if(ptr -> left != NULL){
+        if(ptr->left){
             s.push(ptr->left);
         }
     }

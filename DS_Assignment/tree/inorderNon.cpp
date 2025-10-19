@@ -32,13 +32,12 @@ Node* BinaryTree(){
 }
 
 void inorder(Node* root){
-    if(root == NULL) return;
+    if(!root) return;
 
     stack<Node*> s;
-    Node * ptr = root;
+    Node* ptr = root;
 
-
-    while(ptr != NULL || !s.empty()){
+    while(ptr != NULL || !(s.empty())){
         while(ptr != NULL){
             s.push(ptr);
             ptr = ptr -> left;
@@ -48,7 +47,6 @@ void inorder(Node* root){
         s.pop();
         cout<<" "<<ptr->val;
         ptr = ptr -> right;
-        
     }
 }
 int main(){
