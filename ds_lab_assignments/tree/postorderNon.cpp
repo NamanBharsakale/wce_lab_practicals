@@ -35,32 +35,29 @@ void postorder(Node* root){
     if(!root) return;
 
     stack<Node*> s1,s2;
+    s1.push(root);
 
-    Node* ptr = root;
-
-    s1.push(ptr);
-
-    while(!s1.empty()){
-        ptr = s1.top();
+    while(!(s1.empty())){
+        Node* ptr = s1.top();
         s1.pop();
+
         s2.push(ptr);
 
-        if(ptr -> left)
-        {
+        if(ptr -> left){
             s1.push(ptr->left);
         }
-        if(ptr->right){
+
+        if(ptr -> right){
             s1.push(ptr -> right);
         }
     }
 
-    while (!s2.empty())
-    {
-        ptr = s2.top();
+    while(!(s2.empty())){
+        Node* ptr = s2.top();
         s2.pop();
-        cout<<" "<<ptr->val;
+
+        cout<<" "<<ptr -> val;
     }
-    
 }
 int main(){
     Node* root;

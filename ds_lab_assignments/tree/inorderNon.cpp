@@ -37,17 +37,25 @@ void inorder(Node* root){
     stack<Node*> s;
     Node* ptr = root;
 
-    while(ptr != NULL || !(s.empty())){
-        while(ptr != NULL){
+    while (ptr != NULL || !(s.empty()))
+    {
+        while (ptr!= NULL)
+        {
             s.push(ptr);
             ptr = ptr -> left;
         }
 
-        ptr = s.top();
-        s.pop();
-        cout<<" "<<ptr->val;
-        ptr = ptr -> right;
+        if(ptr == NULL && !(s.empty())){
+            ptr = s.top();
+            s.pop();
+
+            cout<<" "<<ptr->val;
+
+            ptr = ptr -> right;
+        }
+        
     }
+    
 }
 int main(){
     Node* root;
@@ -55,7 +63,7 @@ int main(){
     cout<<"Enter the root node:";
     root = BinaryTree();
 
-    cout<<"Preorder traversal: ";
+    cout<<"Inorder traversal: ";
     inorder(root);
 
     return 0;
