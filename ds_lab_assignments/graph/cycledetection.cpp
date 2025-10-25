@@ -1,84 +1,44 @@
 #include <iostream>
 #include <vector>
+#include <queue>
 using namespace std;
-#define MAX  10
-class Queue{
-    public:
-    int rear,front;
-    int arr[MAX];
-    public:
-    Queue(){
-        front = -1;
-        rear = -1;
-    }
 
-    void push(int data){
-        if(rear == MAX -1){
-            cout<<"Queue is full";
-            return;
-        }
-        if(front = -1 && rear == -1){
-            front = 0;
-            rear = 0;
-        }
-        else{
-            rear = rear + 1;
-        }
-        arr[rear] = data;
-        return;
-    }
+bool detect(int src,vector<int> AdjList[],int visited[]){
+    queue<pair<int,int>> q;
+    q.push({src,-1});
+    visited[src] = 1;
 
-    int pop(){
-        if(front == -1){
-            cout<<"Queu is empty";
-            return -1;
-        }
+    while(!q.empty()){
+        int node = q.front().first;
+        int parent = q.front().second;
+        q.pop();
 
-        int data = arr[front];
-        if(rear == front){
-            front = -1;
-            rear = -1;
-        }
-        else{
-            front = front + 1;
-        }
-
-        return data;
-    }
-
-    bool isEmpty(){
-        return (front == -1);
-    }
-};
-void bfsTraversal(vector<int> AdjList[],int start, vector<bool> visited){
-    Queue q;
-    q.push(start);
-    visited[start] = true;
-
-    while(!q.isEmpty()){
-        int n = q.pop();
-        cout<<" "<<n;
-        
-
-        for(int i = 0; i < AdjList[n].size(); i++){
-            if(!visited[i]){
-                visited[i] = true;
-                q.push(i);
+        for(int i = 0 ; i < AdjList[node].size(); i++){
+            int n = AdjList[node][i];
+            if(!visited[n]){
+                q.push({n,node});
+                visited[n] = 1;
+            }
+            else if(parent != n){
+                return true;
             }
         }
     }
+    return false;
+
+
 }
 
+bool isCycle(int V, vector<int> AdjList[]){
+    int visited[V] = {0};
 
-
-void bfs(vector<int> AdjList[],int vertex){
-    vector<bool> visited(vertex,false);
-
-    for(int i = 0; i < vertex; i++){
-        bfsTraversal(AdjList,i,visited);
+    for(int i = 0; i < V; i++){
+        if(!visited[i]){
+            if(detect(i,AdjList,visited)) return true;
+        }
     }
+    return false;
 }
-
 int main(){
     int vertex,edges;
     cout<<"Enter no. vertex and edgs: ";
@@ -104,5 +64,12 @@ int main(){
         cout<<endl;
     }
 
-    bfs(AdjList,vertex);
+    if(isCycle(vertex,AdjList)){
+        cout<<"It is a cyclic graph.";
+    }
+    else{
+        cout<<"It is not a cyclic graph.";
+    }
+
+    return 0;
 }
