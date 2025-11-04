@@ -21,6 +21,9 @@ int partition(int arr[],int low,int high){
             arr[i] = arr[j];
             arr[j] = t;
         }
+        else{
+            break;
+        }
     }
 
     int t = arr[low];

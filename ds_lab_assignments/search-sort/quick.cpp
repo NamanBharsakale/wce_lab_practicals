@@ -1,36 +1,45 @@
 #include <iostream>
 using namespace std;
 
-void quickSort(int arr[], int first, int last) {
-    int i, j, pivot, temp;
 
-    if (first < last) {
-        pivot = first;   // choose first element as pivot
-        i = first;
-        j = last;
+int partition(int arr[],int low,int high){
+    int p = arr[low];
+    int i = low + 1;
+    int j = high;
 
-        while (i < j) {
-            while (arr[i] <= arr[pivot] && i < last)
-                i++;
-            while (arr[j] > arr[pivot])
-                j--;
-
-            if (i < j) {
-                temp = arr[i];
-                arr[i] = arr[j];
-                arr[j] = temp;
-            }
+    while(i < j){
+        while(arr[i] <= p){
+            i++;
         }
 
-        // Swap pivot with element at j
-        temp = arr[pivot];
-        arr[pivot] = arr[j];
-        arr[j] = temp;
+        while(arr[j] > p){
+            j--;
+        }
 
-        // Recursive calls
-        quickSort(arr, first, j - 1);
-        quickSort(arr, j + 1, last);
+        if(i < j){
+            int t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+
     }
+
+    int t = arr[low];
+    arr[low] = arr[j];
+    arr[j] = t;
+
+    return j;
+
+}
+void quickSort(int arr[], int low, int high) {
+
+    while(low < high){
+        int pivot = partition(arr,low,high);
+
+        quickSort(arr,low,pivot-1);
+        quickSort(arr,pivot+1,high);
+    }
+    
 }
 
 int main() {

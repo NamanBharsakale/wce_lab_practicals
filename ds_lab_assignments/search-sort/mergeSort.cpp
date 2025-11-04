@@ -2,8 +2,8 @@
 using namespace std;
 
 void merge(int arr[], int low, int mid, int high) {
-    int n1 = mid - low + 1;   
-    int n2 = high - mid;   
+    int n1 = mid - low + 1;
+    int n2 = high - mid;      
 
     int left[n1], right[n2];
 

@@ -2,33 +2,37 @@
 using namespace std;
 
 int main() {
-    int n, key;
+    int n,item;
 
-    cout << "Enter number of elements: ";
-    cin >> n;
+    cout<<"How many elements you want to store: ";
+    cin>>n;
 
-    int arr[n];
-    cout << "Enter " << n << " elements:\n";
-    for (int i = 0; i < n; i++) {
-        cin >> arr[i];
+    int a[n];
+
+    cout<<"Enter "<<n<<" elements: ";
+    for(int i = 0; i < n; i++){
+        cin>>a[i];
     }
 
-    cout << "Enter element to search: ";
-    cin >> key;
+    cout<<"Enter the value to search : ";
+    cin>>item;
 
-    // Linear Search
-    int pos = -1;  // To store index if found
-    for (int i = 0; i < n; i++) {
-        if (arr[i] == key) {
-            pos = i;  // Store index
-            break;    // Stop searching after finding the element
+    int pos = -1;
+    for(int i = 0; i < n; i++){
+        if(a[i] == item){
+            pos = i;
         }
     }
 
-    if (pos != -1)
-        cout << "Element found at index " << pos << endl;
-    else
-        cout << "Element not found in the array." << endl;
+    if(pos != -1)
+    {
+        cout<<item<<" found at "<<pos;
+    }
+    else{
+        cout<<item<<" not found";
+    }
 
     return 0;
+
+
 }
