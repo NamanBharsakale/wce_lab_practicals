@@ -1,58 +1,89 @@
 #include <iostream>
-#include <queue>
-#include <vector>
 using namespace std;
 
-vector<int> bfsGraph(int V, vector<vector<int>> &adjList) {
-    queue<int> q;
-    vector<bool> visited(V, false);
-    vector<int> ans;
+#define MAX 100
 
-    q.push(0);
+// ---------- Queue class (array implementation) ----------
+class Queue {
+    int arr[MAX];
+    int front, rear;
+public:
+    Queue() {
+        front = -1;
+        rear = -1;
+    }
+
+    bool isEmpty() {
+        return (front == -1 || front > rear);
+    }
+
+    void enqueue(int val) {
+        if (rear == MAX - 1) {
+            cout << "Queue Overflow\n";
+            return;
+        }
+        if (front == -1)
+            front = 0;
+        arr[++rear] = val;
+    }
+
+    int dequeue() {
+        if (isEmpty()) {
+            cout << "Queue Underflow\n";
+            return -1;
+        }
+        return arr[front++];
+    }
+};
+
+// ---------- BFS using adjacency matrix ----------
+void bfsGraph(int adj[MAX][MAX], int vertices) {
+    bool visited[MAX] = {false};
+    Queue q;
+
+    cout << "\nBFS Traversal starting from vertex 0: ";
+
+    q.enqueue(0);
     visited[0] = true;
 
-    while (!q.empty()) {
-        int node = q.front();
-        q.pop();
-        ans.push_back(node);
-        for (int j = 0; j < adjList[node].size(); j++) {
-            int neighbor = adjList[node][j];
-            if (!visited[neighbor]) {
-                visited[neighbor] = true;
-                q.push(neighbor);
+    while (!q.isEmpty()) {
+        int node = q.dequeue();
+        cout << node << " ";
+
+        for (int i = 0; i < vertices; i++) {
+            if (adj[node][i] == 1 && !visited[i]) {
+                visited[i] = true;
+                q.enqueue(i);
             }
         }
     }
-    return ans;
+    cout << endl;
 }
 
+// ---------- Main Function ----------
 int main() {
-    cout << "Enter vertices and edges: ";
     int vertices, edges;
+    cout << "Enter vertices and edges: ";
     cin >> vertices >> edges;
 
-    vector<vector<int>> AdjList(vertices);
-    int u, v;
-    cout << "Enter (u,v): " << endl;
+    int adj[MAX][MAX] = {0}; // adjacency matrix initialized to 0
+
+    cout << "Enter (u, v):" << endl;
     for (int i = 0; i < edges; i++) {
+        int u, v;
         cin >> u >> v;
-        AdjList[u].push_back(v);
-        AdjList[v].push_back(u);
+        adj[u][v] = 1;
+        adj[v][u] = 1; // undirected graph
     }
 
+    cout << "\nAdjacency Matrix Representation:\n";
     for (int i = 0; i < vertices; i++) {
-        cout << i << "-> ";
-        for (int j = 0; j < AdjList[i].size(); j++) {
-            cout << AdjList[i][j] << " ";
+        for (int j = 0; j < vertices; j++) {
+            cout << adj[i][j] << " ";
         }
         cout << endl;
     }
 
-    vector<int> res = bfsGraph(vertices, AdjList);
-    for (int i = 0; i < res.size(); i++) {
-        cout << res[i] << " ";
-    }
-    cout << endl;
-
+    bfsGraph(adj, vertices);
     return 0;
 }
