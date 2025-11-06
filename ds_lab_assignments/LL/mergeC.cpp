@@ -59,7 +59,7 @@ CList* merge(Node* head1,Node* head2){
 
     if(head2 == NULL){
         CList* l = new CList();
-        l->head = head2;
+        l->head = head1;
         return l;
     }
 
