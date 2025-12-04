@@ -139,6 +139,41 @@ public class SortTypes {
         }
     }
 
+    public static void quickSort(int[] a,int low,int high){
+        if(low >= high) return;
+         int partition = quick(a, low, high);
+         quickSort(a, low, partition-1);
+         quickSort(a, partition+1, high);
+    }
+
+    public static int quick(int[] a,int low,int high){
+        int pivot = a[low];
+        int i = low+1;
+        int j = high;
+
+        while (i < j) {
+            while (i <= high && pivot >= a[i]) {
+                i++;
+            }
+
+            while (pivot < a[j] && j >= low ) {
+                j--;
+            }
+
+            if(i < j){
+                int t = a[i];
+                a[i] = a[j];
+                a[j] = t;
+            }
+        }
+
+        int t = a[j];
+        a[j] = a[low];
+        a[low] = t;
+
+
+        return j;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -150,7 +185,7 @@ public class SortTypes {
             a[i] = sc.nextInt();
         }
 
-        mergeSort(a,0,n-1);
+        quickSort(a,0,n-1);
         System.out.print("Sorting using recursive insertion sort: ");
         for(int k = 0; k < n; k++){
             System.out.print(a[k]+" ");

@@ -1,1 +1,1 @@
-}
+Integer.MIN_VALUE
