@@ -3,24 +3,50 @@ import java.util.*;
 
 public class LongestSubSumK {
     public static int subArraySumK(int[] a,int n,int k){
-        int  i =0,sum =0, j = 0,c =0 , maxC =0;
-        while(i < n && j < n){
-            sum += a[j];
+        HashMap<Long,Integer> map = new HashMap<>();
+        int maxC = 0;
+        long sum = 0;
+        for(int i = 0; i < n; i++){
+            sum += a[i];
+
             if(sum == k){
-                c = j - i + 1;
-                if(maxC < c){
-                    maxC = c;
-                }
-                i++;
-                j = i;
-                sum = 0;
+                maxC = Math.max(maxC, i +1);
             }
-            else{
-                j++;
+            long rem = sum - k;
+            if(map.containsKey(rem)){
+                int len = i - map.get(rem);
+                maxC = Math.max(maxC, len);
+            }
+
+            if(!map.containsKey(sum)){
+                map.put(sum, i);
             }
         }
         return maxC;
+
     }
+
+    //Optimal Two pointer SLiding window
+        public static int subArraySumK2(int[] a,int n,int k){
+            int maxLen = 0,i = 0, j =0 ;
+            long sum = a[0];
+
+            while(j < n){
+
+                if(i <= j && sum > k){
+                    sum = sum - a[i];
+                    i++;
+                }
+                if(sum==k){
+                    maxLen = Math.max(maxLen,j-i+1);
+                }
+                j++;
+                if(j < n) sum += a[j];
+            }
+            return maxLen;
+        }
+
+
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
 
