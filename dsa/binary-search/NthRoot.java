@@ -1,19 +1,21 @@
 import java.util.Scanner;
 
-public class Sqrt {
+public class NthRoot {
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
 
          
         System.out.print("ENter number: ");
         int k = sc.nextInt();
+        System.out.print("Enter the nth : ");
+        int n = sc.nextInt();
 
         int low = 0, high = k;
         int ans=-1;
         while(low <= high){
             int mid = (low+high)/2;
-            
-            if((mid*mid) <= k){
+            long val = (long)Math.pow(mid,n);
+            if(val <= k){
                 ans= mid;
                 low= mid + 1;
             }
