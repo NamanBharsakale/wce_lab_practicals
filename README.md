@@ -28,6 +28,6 @@ This repository is for educational purposes and can be used as a reference for l
 
 ## Contact
 
-**Linkdin:** [https://www.linkedin.com/in/naman-bharsakale-1a7052301/]
+**Linkdin:** [Naman Bharsakale](https://www.linkedin.com/in/naman-bharsakale-1a7052301/)
 
 ⭐ If you find this repository useful, don’t forget to **star** it!
