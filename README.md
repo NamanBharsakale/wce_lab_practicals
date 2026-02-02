@@ -3,7 +3,7 @@
 This repository contains all the lab practicals, exercises, and practice sets I have performed during my coursework and personal practice. It covers subjects like DSA, OOPS, Machine Learning, DBMS, and more. The repository is continuously updated as I add new labs and exercises.
 
 ## Subjects & Contents
-
+- **Web Dev:** Html, Css, Js, React
 - **DSA:** Arrays, Linked Lists, Stack & Queue, Trees, Graphs, Sorting & Searching algorithms.
 - **OOPS:** Classes, Objects, Inheritance, Polymorphism, Interfaces, and Encapsulation.
 - **ML:** Machine Learning exercises and small projects including Regression, Classification, and Clustering.
