@@ -1,0 +1,35 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="students">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="student" maxOccurs="unbounded">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                        <!--Mandotory studentId-->
+                        <xsd:element name="studentId" type="xsd:integer"/>
+                        <xsd:element name="name" type="xsd:string" />
+                        <xsd:element name="year">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:enumeration value="Second"/>
+                                    <xsd:enumeration value="Third"/>
+                                    <xsd:enumeration value="Fourth"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        <xsd:element name="email" type="xsd:string"/>
+                        <xsd:element name="branch" type="xsd:string"/>
+                        <xsd:element name="phone">
+                            <xsd:simpleType>
+                                <xsd:restriction base="xsd:string">
+                                    <xsd:pattern value="[0-9]{10}"/>
+                                </xsd:restriction>
+                            </xsd:simpleType>
+                        </xsd:element>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<students 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="student.xsd">
+
+    <student>
+        <studentId>003</studentId>
+        <name>Naman Bharsakale</name>
+        <year>Second</year>
+        <email>naman@gmail.com</email>
+        <branch>CSE</branch>
+        <phone>9087654321</phone>
+    </student>
+
+    <student>
+        <studentId>004</studentId>
+        <name>Raghav Dattawadkar</name>
+        <year>Second</year>
+        <email>raghav@gmail.com</email>
+        <branch>CSE</branch>
+        <phone>9187654321</phone>
+    </student>
+
+</students>
